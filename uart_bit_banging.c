@@ -21,13 +21,13 @@ void baud_delay(){				//delay between the bit and bit for the maintining baud ra
 }
 
 void serial_transmit(u8 temp){
-	signed char i=7;
+	signed char i=0;
 	tx = 0;						  //start bit transmitting
 	baud_delay();
-	while(i>=0){				  //transmitting 8 bit data serially
-	tx= (temp&(1<<i))? 1:0;		  
+	while(i<=7){				  //transmitting 8 bit data serially From LSB to MSB
+	tx = (temp&(1<<i))? 1:0;		  
 	baud_delay();
-	i--;
+	i++;
 	}
 	baud_delay();
 	tx = 1;			   			//stop bit transmitting
@@ -41,7 +41,7 @@ u8 serial_receive(){
 	else
 		goto start;
 	baud_delay();
-	for(i=7;i>=0;i--){			//getting the 8 bits form the reciever pin
+	for(i=0;i<=7;i++){			//getting the 8 bits form the reciever pin From LSB to MSB
 		if(rx==1){
 			dta=dta|(1<<i);
 		}
