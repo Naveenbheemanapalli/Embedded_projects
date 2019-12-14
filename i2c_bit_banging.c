@@ -98,7 +98,7 @@ u8 i2c_ack(){
 *
 *
 * start		| write 7 bit slave address | ACK |	write 8-bit of 	     | ACK | write the 		      | ACK | stop
-* condition | with write option			|	  |	slave memory address |	   | 8-bit data in memory |	    | condition
+* condition     | with write option         |	  |	slave memory address |	   | 8-bit data in memory     |	    | condition
 *
 *
 **************************************************************************************/
@@ -124,12 +124,12 @@ stop_cond :
 /************************************************************************************
 * READ FRAME OF THE I2C PROTOCAL
 *
-* start		| write 7 bit slave address | ACK |	write 8-bit of 	     | ACK | start    | write 7 bit slave address | ACK |read the 		        | NO | stop
-* condition | with write option			|	  |	slave memory address |	   | conditon | with read option		  |     |8-bit data from memory | ACK| condition
-*|																		   |
+* start		| write 7 bit slave address | ACK |	write 8-bit of 	     | ACK | start    | write 7 bit slave address | ACK |read the 	        | NO | stop
+* condition     | with write option         |	  |	slave memory address |	   | conditon | with read option	  |     |8-bit data from memory | ACK| condition
+*|										   |
 *|	DUMMY write conditon for the I2C device in order to providing		   |
-*|	address from where we can read the data of slave memory				   |
-*|                                                                         |
+*|	address from where we can read the data of slave memory		           |
+*|                                                                                 |
 **************************************************************************************/
 u8 device_read(u8 slave_addr,u8 mem_addr){
 	u8 t,temp;
